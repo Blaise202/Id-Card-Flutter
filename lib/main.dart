@@ -12,14 +12,83 @@ class IdCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[850],
       appBar: AppBar(
-        title: Text('hello'),
-        backgroundColor: Colors.red,
+        title: Text(
+          'My Id Card',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+          ),
+        ),
+        backgroundColor: Colors.grey[800],
         centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        child: Text('click me'),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/thumb2.jpg'),
+                radius: 40,
+              ),
+            ),
+            Divider(
+              height: 40,
+              color: Colors.amberAccent   ,
+            ),
+            Text(
+              'NAME',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              'Blaise-Izerimana',
+              style: TextStyle(
+                color: Colors.amberAccent,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 15,),
+            Text(
+              'CURRENT LEVEL',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              '5',
+              style: TextStyle(
+                color: Colors.amberAccent,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.mail,
+                  color: Colors.white,
+                ),
+                SizedBox(width: 10,),
+                Text(
+                  'blaise@ex.com',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    letterSpacing: 1,
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
