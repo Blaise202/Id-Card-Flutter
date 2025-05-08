@@ -21,6 +21,7 @@ class _QuoteListState extends State<QuoteList> {
     Quote(text: 'The only impossible way is the one you do not choose', author: 'Blaise'),
     Quote(text: 'Just deliver the best you can', author: 'Blaise'),
     Quote(text: 'Be yourself! Everyone else is already taken', author: 'Oscar Wilde'),
+    Quote(text: 'delete me', author: 'delete'),
   ];
 
   int count = 1;
@@ -46,7 +47,14 @@ class _QuoteListState extends State<QuoteList> {
         child: Column(
           spacing: 5,
           children: quotes.map((quote) =>
-            QuoteCard(quote: quote)
+            QuoteCard(
+              quote: quote,
+              delete: (){
+                setState(() {
+                  quotes.remove(quote);
+                });
+              }
+            )
           ).toList(),
         ),
       )
