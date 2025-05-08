@@ -22,6 +22,35 @@ class _QuoteListState extends State<QuoteList> {
     Quote(text: 'Be yourself! Everyone else is already taken', author: 'Blaise')
   ];
 
+  Widget quoteTemplate(quote){
+    return Card(
+      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+      color: Colors.green[900],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              quote.text,
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.grey[100],
+              ),
+            ),
+            Text(
+              quote.author,
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.grey[200]
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   int count = 1;
 
   @override
@@ -45,12 +74,7 @@ class _QuoteListState extends State<QuoteList> {
         child: Column(
           spacing: 5,
           children: quotes.map((quote) =>
-            Text(
-              '${quote.text} - ${quote.author}',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            quoteTemplate(quote)
           ).toList(),
         ),
       )
