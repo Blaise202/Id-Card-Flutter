@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -14,11 +15,11 @@ class QuoteList extends StatefulWidget {
 
 class _QuoteListState extends State<QuoteList> {
 
-  List<String> quotes = [
-    'Try and fail but never fail to try',
-    'The only impossible way is the one you do not choose',
-    'Just deliver the best you can',
-    'Be your self! Everyone is already taken'
+  List<Quote> quotes = [
+    Quote(text:'Try and fail but never fail to try', author: 'Blaise'),
+    Quote(text: 'The only impossible way is the one you do not choose', author: 'Blaise'),
+    Quote(text: 'Just deliver the best you can', author: 'Blaise'),
+    Quote(text: 'Be yourself! Everyone else is already taken', author: 'Blaise')
   ];
 
   int count = 1;
@@ -41,19 +42,16 @@ class _QuoteListState extends State<QuoteList> {
         ),
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            spacing: 5,
-            children: quotes.map((quote) =>
-              Text(
-                quote,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+        child: Column(
+          spacing: 5,
+          children: quotes.map((quote) =>
+            Text(
+              '${quote.text} - ${quote.author}',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
               ),
-            ).toList(),
-          ),
+            ),
+          ).toList(),
         ),
       )
     );
