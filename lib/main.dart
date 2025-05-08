@@ -2,115 +2,60 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: IdCard(),
+    home: QuoteList(),
   ));
 }
-
-class IdCard extends StatefulWidget {
-  const IdCard({super.key});
+class QuoteList extends StatefulWidget {
+  const QuoteList({super.key});
 
   @override
-  State<IdCard> createState() => _IdCardState();
+  State<QuoteList> createState() => _QuoteListState();
 }
 
-class _IdCardState extends State<IdCard> {
+class _QuoteListState extends State<QuoteList> {
 
-  int level = 0;
+  List<String> quotes = [
+    'Try and fail but never fail to try',
+    'The only impossible way is the one you do not choose',
+    'Just deliver the best you can',
+    'Be your self! Everyone is already taken'
+  ];
+
+  int count = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[850],
       appBar: AppBar(
-        title: Text(
-          'My Id Card',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold
+        backgroundColor: Colors.redAccent,
+        centerTitle: true,
+        title: Title(
+          color: Colors.redAccent,
+          child: Text(
+            'Life Changing Quotes',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        backgroundColor: Colors.grey[800],
-        centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            level++;
-          });
-        },
-        backgroundColor: Colors.grey[800],
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 20,
-        ),
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/thumb2.jpg'),
-                radius: 40,
-              ),
-            ),
-            Divider(
-              height: 40,
-              color: Colors.amberAccent   ,
-            ),
-            Text(
-              'NAME',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              'Blaise-Izerimana',
-              style: TextStyle(
-                color: Colors.amberAccent,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 15,),
-            Text(
-              'CURRENT LEVEL',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              '$level',
-              style: TextStyle(
-                color: Colors.amberAccent,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 15,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(
-                  Icons.mail,
-                  color: Colors.white,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            spacing: 5,
+            children: quotes.map((quote) =>
+              Text(
+                quote,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
-                SizedBox(width: 10,),
-                Text(
-                  'blaise@ex.com',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    letterSpacing: 1,
-                  ),
-                )
-              ],
-            )
-          ],
+              ),
+            ).toList(),
+          ),
         ),
-      ),
+      )
     );
   }
 }
