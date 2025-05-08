@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quote.dart';
+import 'quote_card.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -19,37 +20,8 @@ class _QuoteListState extends State<QuoteList> {
     Quote(text:'Try and fail but never fail to try', author: 'Blaise'),
     Quote(text: 'The only impossible way is the one you do not choose', author: 'Blaise'),
     Quote(text: 'Just deliver the best you can', author: 'Blaise'),
-    Quote(text: 'Be yourself! Everyone else is already taken', author: 'Blaise')
+    Quote(text: 'Be yourself! Everyone else is already taken', author: 'Oscar Wilde'),
   ];
-
-  Widget quoteTemplate(quote){
-    return Card(
-      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-      color: Colors.green[900],
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              quote.text,
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.grey[100],
-              ),
-            ),
-            Text(
-              quote.author,
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.grey[200]
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   int count = 1;
 
@@ -74,7 +46,7 @@ class _QuoteListState extends State<QuoteList> {
         child: Column(
           spacing: 5,
           children: quotes.map((quote) =>
-            quoteTemplate(quote)
+            QuoteCard(quote: quote)
           ).toList(),
         ),
       )
